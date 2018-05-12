@@ -20,8 +20,6 @@
             var _answer=new Array("重","中","轻");
             var _ques = new Object();
             _ques.question_content = _question;
-            _ques.question_type = "normal";
-            _ques.answer_type = "singleselection";
             _ques.model_id = "1";
             _ques.node_id = "2";
             _ques.question_answer = _answer;

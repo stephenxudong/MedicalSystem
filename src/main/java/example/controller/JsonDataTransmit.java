@@ -30,14 +30,11 @@ public class JsonDataTransmit {
     //data: JSON.stringify(obj), 以json字符串方式传递
     @RequestMapping(value="/transmitCurrent",method= RequestMethod.POST )
     public
-    @ResponseBody String uplad(@RequestBody  model_node current,HttpServletResponse response
+    @ResponseBody String uplad(@RequestBody  Map<String,Object> current,HttpServletResponse response
                          )throws Exception{
         response.setCharacterEncoding("UTF-8");
         JSONObject temp=new JSONObject();
-        //如果是json字符串
-        //利用answeMap和temp生成想要的数据
-
-        //如果是json字符数组
+        //前端是创建json(current)的时候，只需要提供问题,问题编号和当前的回答
         logger.info("=====================================");
         logger.info("current node is "+ current.toString());
         logger.info("=====================================");
@@ -62,22 +59,6 @@ public class JsonDataTransmit {
         return temp.toJSONString();
     }
 
-//    @RequestMapping(value="/transmitCurrent",method= RequestMethod.POST)
-//    public @ResponseBody
-//    HashMap<String,Object> getData(@RequestBody model_node current)
-//    {
-//
-//        //保存当前的问题和答案，需要维护一个list
-//        //list.add(question)
-//
-//        // 获得下一个问题，可以把当前问题作为参数，查找数据库
-//
-//        // if(this is the last question)map.put("msg","this is the last");
-//        // else
-//        map.put("msg","");
-//
-//        return map;
-//
-//    }
+
 
 }

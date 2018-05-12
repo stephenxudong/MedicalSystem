@@ -35,7 +35,7 @@
     <!-- 自动扫描装配 -->
     <context:component-scan base-package="example.controller"/>
 
-    <!-- json 传输的中文处理，utf-8 -->
+    <!-- json 传输的中文处理，utf-8，是真的难得，网上给的错误的注入太多了 -->
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
