@@ -8,7 +8,7 @@
 
   <!--welcome pages-->
   <welcome-file-list>
-    <welcome-file>/view/fir.jsp</welcome-file>
+    <welcome-file>/view/demo.jsp</welcome-file>
   </welcome-file-list>
 
 

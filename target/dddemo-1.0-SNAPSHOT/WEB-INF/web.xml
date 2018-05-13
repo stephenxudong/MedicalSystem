@@ -8,7 +8,11 @@
 
   <!--welcome pages-->
   <welcome-file-list>
+<<<<<<< HEAD
     <welcome-file>/view/fir.jsp</welcome-file>
+=======
+    <welcome-file>/view/demo.jsp</welcome-file>
+>>>>>>> b01b641e9074fc50116ff87f38c31697ea2d9f52
   </welcome-file-list>
 
 
@@ -41,10 +45,13 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+<<<<<<< HEAD
   <listener>
     <listener-class>socket.MultSocketLoader</listener-class>
   </listener>
 
+=======
+>>>>>>> b01b641e9074fc50116ff87f38c31697ea2d9f52
   <filter>
     <filter-name>characterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
