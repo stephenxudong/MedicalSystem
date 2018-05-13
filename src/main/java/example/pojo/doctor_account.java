@@ -4,6 +4,10 @@ public class doctor_account {
     private String doctor_account_id;
     private String doctor_name;
     private String department;
+
+
+
+    private String status;
     private List<medical_case> medical_caselist;
     public doctor_account(){
         super();
@@ -40,6 +44,13 @@ public class doctor_account {
 
     public String getDepartment() {
         return department;
+    }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<medical_case> getMedical_caselist() {

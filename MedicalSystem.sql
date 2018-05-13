@@ -11,7 +11,7 @@
  Target Server Version : 50720
  File Encoding         : utf-8
 
- Date: 05/11/2018 17:27:54 PM
+ Date: 05/13/2018 21:42:52 PM
 */
 
 SET NAMES utf8;
@@ -45,6 +45,7 @@ CREATE TABLE `medical_case` (
   `patient_account_id` varchar(20) NOT NULL,
   `doctor_account_id` varchar(20) NOT NULL,
   `file_path` varchar(50) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT '0' COMMENT '当服务器接收到返回的病历单号，将此项设置为true',
   PRIMARY KEY (`case_id`),
   KEY `patient account_id` (`patient_account_id`),
   KEY `doctor_account_id` (`doctor_account_id`),
@@ -56,48 +57,26 @@ CREATE TABLE `medical_case` (
 --  Records of `medical_case`
 -- ----------------------------
 BEGIN;
-INSERT INTO `medical_case` VALUES ('1', '1', '1', 'nofile');
+INSERT INTO `medical_case` VALUES ('1', '1', '1', 'nofile', '0');
 COMMIT;
 
 -- ----------------------------
---  Table structure for `model_node`
+--  Table structure for `node`
 -- ----------------------------
-DROP TABLE IF EXISTS `model_node`;
-CREATE TABLE `model_node` (
-  `model_id` varchar(5) NOT NULL,
-  `node_id` int(11) NOT NULL,
-  `question_content` varchar(255) NOT NULL,
-  `question_type` varchar(10) NOT NULL,
-  `answer_type` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`node_id`),
-  KEY `model_id` (`model_id`)
+DROP TABLE IF EXISTS `node`;
+CREATE TABLE `node` (
+  `node_id` int(5) NOT NULL,
+  `model_id` varchar(5) CHARACTER SET latin1 NOT NULL,
+  `node_type` varchar(10) CHARACTER SET latin1 NOT NULL,
+  `content` varchar(50) NOT NULL,
+  PRIMARY KEY (`node_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Records of `model_node`
+--  Records of `node`
 -- ----------------------------
 BEGIN;
-INSERT INTO `model_node` VALUES ('1', '1', '白带量', 'normal', 'single_selection'), ('1', '2', '白带颜色', 'normal', 'single_selection'), ('1', '3', '白带形状', 'normal', 'single_selection'), ('1', '4', '白带异味', 'normal', 'single_selection'), ('1', '5', '外阴瘙痒', 'normal', 'single_selection'), ('1', '6', '外阴疼痛', 'normal', 'single_selection'), ('1', '7', '尿痛', 'normal', 'single_selection'), ('1', '8', '性交痛', 'normal', 'single_selection');
-COMMIT;
-
--- ----------------------------
---  Table structure for `node_relation`
--- ----------------------------
-DROP TABLE IF EXISTS `node_relation`;
-CREATE TABLE `node_relation` (
-  `current_node_id` int(11) NOT NULL,
-  `next_node_id` int(11) NOT NULL,
-  KEY `current_node_id` (`current_node_id`),
-  KEY `next_node_id` (`next_node_id`),
-  CONSTRAINT `node_relation_ibfk_1` FOREIGN KEY (`current_node_id`) REFERENCES `model_node` (`node_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `node_relation_ibfk_2` FOREIGN KEY (`next_node_id`) REFERENCES `model_node` (`node_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
---  Records of `node_relation`
--- ----------------------------
-BEGIN;
-INSERT INTO `node_relation` VALUES ('1', '2'), ('2', '3'), ('3', '4'), ('4', '5'), ('5', '6'), ('6', '7'), ('7', '8');
+INSERT INTO `node` VALUES ('0', '1', 'question', '月经周期'), ('1', '1', 'answer', '长'), ('2', '1', 'answer', '中'), ('3', '1', 'answer', '短'), ('4', '1', 'question', '白带量'), ('5', '1', 'answer', '一般'), ('6', '1', 'answer', '很多'), ('7', '1', 'question', '白带颜色'), ('8', '1', 'answer', '灰黄色'), ('9', '1', 'answer', '白色'), ('10', '1', 'answer', '黄绿色'), ('11', '1', 'answer', '红色或淡红色');
 COMMIT;
 
 -- ----------------------------
@@ -117,24 +96,6 @@ CREATE TABLE `patient_account` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `patient_account` VALUES ('1', '张红汗', '111222333', '123456789012345678');
-COMMIT;
-
--- ----------------------------
---  Table structure for `question_answer`
--- ----------------------------
-DROP TABLE IF EXISTS `question_answer`;
-CREATE TABLE `question_answer` (
-  `node_id` int(11) NOT NULL,
-  `answer` varchar(100) NOT NULL,
-  KEY `node_id` (`node_id`),
-  CONSTRAINT `question_answer_ibfk_1` FOREIGN KEY (`node_id`) REFERENCES `model_node` (`node_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Records of `question_answer`
--- ----------------------------
-BEGIN;
-INSERT INTO `question_answer` VALUES ('1', '多'), ('1', '中'), ('1', '少'), ('2', '灰黄色'), ('2', '白色'), ('2', '灰白色'), ('2', '透明'), ('2', '黄绿色'), ('2', '红色或者淡红色'), ('2', '淡黄色'), ('3', '泡沫状'), ('3', '凝乳状'), ('3', '匀质'), ('3', '稠厚'), ('3', '泔水样'), ('3', '稀薄'), ('4', '重'), ('4', '中'), ('4', '轻'), ('5', '重'), ('5', '中'), ('5', '轻'), ('6', '有'), ('6', '无'), ('7', '有'), ('7', '无'), ('8', '有'), ('8', '无');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

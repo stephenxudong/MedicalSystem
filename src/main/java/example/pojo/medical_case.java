@@ -4,17 +4,20 @@ public class medical_case {
     private String case_id;
     private String patient_account_id;
     private String doctor_account_id;
+    private String status;
     private String file_path;
     private doctor_account doctor_account;
     private patient_account patient_account;
     public medical_case(){
         super();
     }
-    public medical_case(String case_id,String patient_account_id,String doctor_account_id,String file_path){
+    public medical_case(String case_id,String patient_account_id,String
+            doctor_account_id,String file_path,String status){
         this.case_id=case_id;
         this.patient_account_id=patient_account_id;
         this.doctor_account_id=doctor_account_id;
         this.file_path=file_path;
+        this.status = status;
     }
 
     public void setCase_id(String case_id) {

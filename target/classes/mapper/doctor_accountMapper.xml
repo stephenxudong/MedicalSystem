@@ -13,6 +13,11 @@
         WHERE doctor_account_id=#{doctor_account_id}
     </update>
 
+    <update id="loginChangeStatus" parameterType="example.pojo.doctor_account">
+        UPDATE doctor_account SET status='true'
+        WHERE doctor_account_id=#{doctot_account_id}
+    </update>
+
     <insert id="insertDoctor" parameterType="example.pojo.doctor_account" useGeneratedKeys="true"  >
         INSERT INTO doctor_account (doctor_account_id, doctor_name, department) VALUES (#{doctor_account_id},#{doctor_name},#{department})
     </insert>

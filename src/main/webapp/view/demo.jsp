@@ -15,17 +15,36 @@
     </script>
     <script type="text/javascript">
         //封装成json的数据
-        $(function(){
-            var _question="外阴瘙痒";
-            var _answer=new Array("重","中","轻");
+
+        //var cases = new Array("外阴瘙痒:","重","中","轻");
+        var quesNum=1;//用于设置当前的问题的id
+        var currentModeNodeId = 1;//保存后台传来的node_id
+
+
+        function generate() {
             var _ques = new Object();
-            _ques.question_content = _question;
-            _ques.model_id = "1";
-            _ques.node_id = "2";
-            _ques.question_answer = _answer;
+            var currId = "q"+quesNum.toString();
+            alert(currId);
 
+            if(quesNum != 1)
+            {
+                //选择器的一点bug
+                alert("ques!=1 we enter");
+                var selector = "#q"+(quesNum-1).toString();
+                alert(selector);
+                //当前的quesNum指向的问题还没有产生，所以需要先减一
+                alert($(selector).html());
+                _ques.question_content = $(selector).html().split(" ")[1];
+                alert(_ques.question_content);
+                _ques.model_id = "1";
+                _ques.node_id = currentModeNodeId;
+                _ques.question_answer =$(this).html();
+                alert("currrent answer is "+_ques.question_answer);
+            }
+
+            if(quesNum==1) _ques.msg="first question";
+            else _ques.msg="not first one";
             alert(JSON.stringify(_ques));
-
             $.ajax({
                 type:'post',
                 url:"/dddemo/dataTrans/transmitCurrent/",
@@ -33,43 +52,51 @@
                 data:JSON.stringify(_ques),
                 success:function(data){
                     alert(data);
-                    var thecase=data.result;
-                    var data1=eval('('+thecase+')');
+                    var parsedata = jQuery.parseJSON(data);
+                    /** 接下来获取下一题需要的信息
+                     * 后台返回的是jsonString
+                     * data：model_node（包含问题和答案等）
+                     * status:一般都是1，表示成功
+                     * msg：如果是查询不到题了（也就是刚刚传递给后台最后一题），那么后台设置msg为"no more question"
+                     */
+                    if(data.msg=="no more question")
+                    {
+                        //code to trans all question and answer,then return from this function
+                        return;
+                    }
+                    var question = parsedata.data.question_content;
+                    var answer = parsedata.data.question_answer;
+                    var ans = new Array();
+                    for(var i = 0;i<answer.length;i++)
+                        ans.push(answer[i].answer);
+                    alert("this is question"+question.toString());
+                    currentModeNodeId=question.node_id;
+                    alert("this is answer"+ ans.toString());
+                    addcase(question,ans);
+
                 }
 
             })
-        });
 
-        var cases = new Array("外阴瘙痒:","重","中","轻");
-        var questionnumber=1;
-        var answernumber=1;
-        function addcase(que,ans){
-            var illarray = new Array();
-            for(var i=0;i<cases.length;i++)
-                illarray[i]=cases[i];
-            var nextcase = new Object();
-            nextcase.casedata=illarray;
-            var answerone=new Array();
-            for(var a=0;a<nextcase.casedata.length-1;a++) {
-                answerone[a]= "<div class=\"btn-group\" data-toggle=\"buttons\" >\n" +
-                    "  <label class=\"btn btn-primary active\">\n" +
-                    "    <input type=\"radio\" name=\"options\" id='a" +ans+ "' onclick='qqq()' autocomplete=\"off\">"+nextcase.casedata[a+1]+
-                    "  </label>\n" +
-                    "</div>";
-                ans++;
-            }
-            var nextone="<div id='t"+que+"'>\n" +
-                "  <p id='q"+que+"'>"+"第"+que+"题"+" "+nextcase.casedata[0]+"</p>\n" +answerone+
-                "</div>";
-            $(".content").append(nextone);
-            que++;
-            answernumber=ans+nextcase.casedata.length;
-            questionnumber=que;
-        }
-        function qqq() {
-            addcase(questionnumber,answernumber);
             $(".ci").hide();
             scrollToEnd();
+        }
+
+        function addcase(ques,ans){
+            alert("add next question");
+            var answerText=new Array();
+            for(var a=0;a<ans.length;a++) {
+                answerText[a]= "<div class=\"btn-group\" data-toggle=\"buttons\" >\n" +
+                    "  <label class=\"btn btn-primary active\">\n" +
+                    "    <input type=\"radio\" name=\"options\" id='a" +quesNum+ "' onclick='generate()' autocomplete=\"off\">"+ans[a]+
+                    "  </label>\n" +
+                    "</div>";
+            }
+            var nextone="<div id='t"+quesNum+"'>\n" +
+                "  <p class='question' id='q"+quesNum+"'>"+"第"+quesNum+"题"+" "+ques+"</p>\n" +answerText+
+                "</div>";
+            $(".content").append(nextone);
+            quesNum++;
         }
 
     </script>
@@ -79,7 +106,7 @@
 
 <body>
 
-<button class="ci" onclick="qqq()">点我开始</button>
+<button class="ci" onclick="generate()">点我开始</button>
 <div class="content"></div>
 
 
