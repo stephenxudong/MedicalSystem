@@ -9,7 +9,7 @@
         <module name="dddemo" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel>
       <module name="dddemo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
