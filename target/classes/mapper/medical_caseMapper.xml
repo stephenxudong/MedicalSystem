@@ -2,15 +2,39 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="example.dao.medical_caseMapper">
-
-    <select id="refreshDir" parameterType="String" resultType="example.pojo.medical_case">
-        SELECT * FROM medical_case WHERE doctor_account_id=#{doctor_account_id}
+<mapper namespace="mapper.medical_caseMapper">
+    <select id="findByName" parameterType="String" resultType="example.pojo.medical_case">
+        SELECT * FROM medical_case WHERE case_id=#{case_id}
     </select>
 
-    <update id="updateResponse" >
-      UPDATE medical_case
-      SET file_path=#{file_path}
-      WHERE patient_account_id=#{patient_account_id}and doctor_account_id=#{doctor_account_id}
-    </update>
+    <insert id="insertMedicalCase" parameterType="example.pojo.medical_case" useGeneratedKeys="true"  >
+        INSERT INTO medical_case (case_id, patient_account_id, doctor_account_id,file_path) VALUES (#{case_id},#{patient_account_id},#{doctor_account_id},#{file_path})
+</insert>
+
+    <resultMap id="patientResultMap" type="example.pojo.medical_case">
+        <id property="id" column="case_id"/>
+        <result property="patient_account_id" column="patient_account_id"/>
+        <result property="doctor_account_id" column="doctor_account_id"/>
+        <result property="file_path" column="file_path"/>
+        <association property="patient_account" column="patient_name"
+         javaType="example.pojo.patient_account"  select="selectByPatient"/>
+    </resultMap>
+
+    <select id="selectByPatient" parameterType="String" resultType="example.pojo.patient_account">
+        SELECT * FROM patient_account WHERE patient_account_id=#{patient_account_id}
+    </select>
+
+    <resultMap id="doctorResultMap" type="example.pojo.medical_case">
+        <id property="id" column="case_id"/>
+        <result property="patient_account_id" column="patient_account_id"/>
+        <result property="doctor_account_id" column="doctor_account_id"/>
+        <result property="file_path" column="file_path"/>
+        <association property="doctor_account" column="doctor_name"
+                     javaType="example.pojo.patient_account"  select="selectByPatient"/>
+    </resultMap>
+
+    <select id="selectByPatient" parameterType="String" resultType="example.pojo.patient_account">
+        SELECT * FROM doctor_account WHERE doctor_account_id=#{doctor_account_id}
+    </select>
+
 </mapper>

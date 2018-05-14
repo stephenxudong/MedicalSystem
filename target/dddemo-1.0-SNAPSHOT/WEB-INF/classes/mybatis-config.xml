@@ -27,28 +27,10 @@
         </environment>
     </environments>
     <mappers>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
         <!--<mapper resource="mapper/doctor_accountMapper.xml"></mapper>-->
         <!--<mapper resource="mapper/medical_caseMapper.xml"></mapper>-->
         <!--<mapper resource="mapper/patient_accountMapper.xml"></mapper>-->
         <!--<mapper resource="mapper/question_answerMapper.xml"></mapper>-->
         <mapper resource="mapper/node.xml"></mapper>
-=======
-<<<<<<< HEAD
-        <mapper resource="mapper/UserMapper.xml"></mapper>
-        <mapper resource="mapper/InfoMapper.xml"></mapper>
-=======
->>>>>>> 324f87684d2c1c65ccd7a65a947801d081aaf292
-        <mapper resource="mapper/doctor_accountMapper.xml"></mapper>
-        <mapper resource="mapper/medical_caseMapper.xml"></mapper>
-        <mapper resource="mapper/patient_accountMapper.xml"></mapper>
-        <mapper resource="mapper/question_answerMapper.xml"></mapper>
-<<<<<<< HEAD
-=======
->>>>>>> b01b641e9074fc50116ff87f38c31697ea2d9f52
->>>>>>> refs/remotes/origin/master
->>>>>>> 324f87684d2c1c65ccd7a65a947801d081aaf292
     </mappers>
 </configuration>

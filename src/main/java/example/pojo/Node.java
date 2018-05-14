@@ -6,6 +6,9 @@ public class Node {
     private String content;
     private String model_id;
 
+
+    private String comment;
+
     public Node(){};
     public Node(String node_id,String node_type,String content, String model_id)
     {
@@ -14,6 +17,14 @@ public class Node {
         this.node_type = node_type;
         this.model_id = model_id;
     }
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public String getNode_id() {
         return node_id;
     }

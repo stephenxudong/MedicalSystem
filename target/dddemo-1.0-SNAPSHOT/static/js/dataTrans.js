@@ -81,4 +81,3 @@ function addcase(ques,ans){
     quesNum++;
 }
 
-
