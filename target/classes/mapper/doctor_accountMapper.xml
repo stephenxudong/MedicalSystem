@@ -2,33 +2,17 @@
         <!DOCTYPE mapper
                 PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.doctor_accountMapper">
-    <select id="findByPatientId" parameterType="String" resultType="example.pojo.doctor_account">
-        SELECT * FROM doctor_account WHERE doctor_account_id=#{doctor_account_id}
+<mapper namespace="example.dao.doctor_accountMapper">
+
+    <select id="loginResponse"  resultType="example.pojo.doctor_account">
+        SELECT * FROM doctor_account WHERE doctor_name=#{userName}and doctor_password=#{userPassword}
     </select>
+    <!--<resultMap id="medicalCaseResultMap" type="example.pojo.doctor_account">-->
+        <!--<id property="id" column="doctor_account_id"/>-->
+        <!--<collection property="medical_caselist" javaType="ArrayList"-->
+         <!--column="id" ofType="example.pojo.medical_case"-->
+          <!--select="selectCaseByDoctoId"   />-->
+    <!--</resultMap>-->
 
-    <update id="updateDoctorAccount" parameterType="example.pojo.doctor_account">
-        UPDATE doctor_account
-        SET doctor_name=#{doctor_name},department=#{department}
-        WHERE doctor_account_id=#{doctor_account_id}
-    </update>
 
-    <update id="loginChangeStatus" parameterType="example.pojo.doctor_account">
-        UPDATE doctor_account SET status='true'
-        WHERE doctor_account_id=#{doctot_account_id}
-    </update>
-
-    <insert id="insertDoctor" parameterType="example.pojo.doctor_account" useGeneratedKeys="true"  >
-        INSERT INTO doctor_account (doctor_account_id, doctor_name, department) VALUES (#{doctor_account_id},#{doctor_name},#{department})
-    </insert>
-
-    <resultMap id="medicalCaseResultMap" type="example.pojo.doctor_account">
-        <id property="id" column="doctor_account_id"/>
-        <collection property="medical_caselist" javaType="ArrayList"
-         column="id" ofType="example.pojo.medical_case"
-          select="selectCaseByDoctoId"   />
-    </resultMap>
-    <select id="selectCaseByDoctorId" resultType="example.pojo.medical_case">
-        SELECT * FROM medical_case WHERE doctor_account_id=#{doctor_account_id}
-    </select>
 </mapper>

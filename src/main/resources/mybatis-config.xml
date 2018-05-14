@@ -27,10 +27,12 @@
         </environment>
     </environments>
     <mappers>
-        <!--<mapper resource="mapper/doctor_accountMapper.xml"></mapper>-->
-        <!--<mapper resource="mapper/medical_caseMapper.xml"></mapper>-->
+        <mapper resource="mapper/doctor_accountMapper.xml"></mapper>
+        <mapper resource="mapper/medical_caseMapper.xml"></mapper>
         <!--<mapper resource="mapper/patient_accountMapper.xml"></mapper>-->
         <!--<mapper resource="mapper/question_answerMapper.xml"></mapper>-->
-        <mapper resource="mapper/node.xml"></mapper>
+        <package name="example.dao.doctor_accountMapper"/>
+        <package name="example.dao.medical_caseMapper"/>
+
     </mappers>
 </configuration>
