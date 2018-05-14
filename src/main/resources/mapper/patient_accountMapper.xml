@@ -13,6 +13,8 @@
         SET patient_phone_number=#{patient_phone_number}
         WHERE doctor_account_id=#{doctor_account_id}
     </update>
+
+
     <insert id="insertPatient" parameterType="example.pojo.patient_account" useGeneratedKeys="true"  >
         INSERT INTO patient_account (patient_account_id, patient_name, patient_phone_number, patient_identification_id) VALUES (#{patient_account_id},#{patient_name},#{patient_phone_number},#{patient_identification_id})
     </insert>
