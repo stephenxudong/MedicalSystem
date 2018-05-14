@@ -27,14 +27,9 @@
         </environment>
     </environments>
     <mappers>
-<<<<<<< HEAD
-        <mapper resource="mapper/UserMapper.xml"></mapper>
-        <mapper resource="mapper/InfoMapper.xml"></mapper>
-=======
         <mapper resource="mapper/doctor_accountMapper.xml"></mapper>
         <mapper resource="mapper/medical_caseMapper.xml"></mapper>
         <mapper resource="mapper/patient_accountMapper.xml"></mapper>
         <mapper resource="mapper/question_answerMapper.xml"></mapper>
->>>>>>> b01b641e9074fc50116ff87f38c31697ea2d9f52
     </mappers>
 </configuration>

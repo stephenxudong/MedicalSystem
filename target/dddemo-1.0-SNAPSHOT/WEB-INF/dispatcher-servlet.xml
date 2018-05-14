@@ -35,8 +35,6 @@
     <!-- 自动扫描装配 -->
     <context:component-scan base-package="example.controller"/>
 
-<<<<<<< HEAD
-=======
     <!-- json 传输的中文处理，utf-8，是真的难得，网上给的错误的注入太多了 -->
     <mvc:annotation-driven>
         <mvc:message-converters>
@@ -51,5 +49,4 @@
     </mvc:annotation-driven>
 
 
->>>>>>> b01b641e9074fc50116ff87f38c31697ea2d9f52
 </beans>
