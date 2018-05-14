@@ -6,34 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96ec8f8-0af9-43a8-bfa9-16d44c2541ba" name="Default" comment="HMS">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/example/dao/doctor_accountMapper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/example/dao/medical_caseMapper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/example/dao/node.java" />
+    <list default="true" id="d96ec8f8-0af9-43a8-bfa9-16d44c2541ba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dddemo.iml" afterPath="$PROJECT_DIR$/dddemo.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/UserTest.java" afterPath="$PROJECT_DIR$/src/main/java/test/UserTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/doctor_accountMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/doctor_accountMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/medical_caseMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/medical_caseMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/node.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/node.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mysql.properties" afterPath="$PROJECT_DIR$/src/main/resources/mysql.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/controller/JsonDataTransmit.class" afterPath="$PROJECT_DIR$/target/classes/example/controller/JsonDataTransmit.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/pojo/medical_case.class" afterPath="$PROJECT_DIR$/target/classes/example/pojo/medical_case.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/pojo/model_node.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/pojo/node_relation.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/pojo/question_answer.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/example/service/GynaecologyLogic.class" afterPath="$PROJECT_DIR$/target/classes/example/service/GynaecologyLogic.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/doctor_accountMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/doctor_accountMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/medical_caseMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/medical_caseMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/node.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/node.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mysql.properties" afterPath="$PROJECT_DIR$/target/classes/mysql.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/socket/MultSocketLoader.class" afterPath="$PROJECT_DIR$/target/classes/socket/MultSocketLoader.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/socket/ThreadSeverSocket.class" afterPath="$PROJECT_DIR$/target/classes/socket/ThreadSeverSocket.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/socket/ThreadSocket.class" afterPath="$PROJECT_DIR$/target/classes/socket/ThreadSocket.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/UserTest.class" afterPath="$PROJECT_DIR$/target/classes/test/UserTest.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -97,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysql.properties" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mysql.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mysql.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+            <state relative-caret-position="69">
+              <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -110,7 +84,7 @@
       <file leaf-file-name="mybatis-config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="429">
               <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
@@ -178,7 +152,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="medical_caseMapper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="medical_caseMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/example/dao/medical_caseMapper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="115">
@@ -287,12 +261,12 @@
         <option value="$PROJECT_DIR$/src/main/java/example/dao/node.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/doctor_accountMapper.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mysql.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/doctor_accountMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/test/UserTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/medical_caseMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/medical_caseMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mysql.properties" />
       </list>
     </option>
   </component>
@@ -1482,7 +1456,7 @@
       <workItem from="1526174913360" duration="692000" />
       <workItem from="1526279578420" duration="79000" />
       <workItem from="1526279666861" duration="214000" />
-      <workItem from="1526279851282" duration="6655000" />
+      <workItem from="1526279851282" duration="7045000" />
     </task>
     <task id="LOCAL-00001" summary="HMS">
       <created>1525790404257</created>
@@ -1491,14 +1465,22 @@
       <option name="project" value="LOCAL" />
       <updated>1525790404257</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="HMS">
+      <created>1526286559698</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1526286559698</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="383659000" />
+    <option name="totallyTimeSpent" value="384049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1825,22 +1807,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mysql.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/doctor_accountMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -1909,6 +1875,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mysql.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
