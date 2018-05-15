@@ -15,10 +15,10 @@ public class UserTest {
            g.findNodesById(temp,3);
            List<Node> nodes = new ArrayList<>();
          for(int t:temp){
-            Node node = session.selectOne("mapper.node.findByNodeId", t);
+            Node node = session.selectOne("mapper.nodeMapper.findByNodeId", t);
             nodes.add(node);
          }
-            User user = session.selectOne("mapper.node.findByNodeId", 7);
+            User user = session.selectOne("mapper.nodeMapper.findByNodeId", 7);
             session.commit();
             System.out.println(user.getUsername());
          User user1;

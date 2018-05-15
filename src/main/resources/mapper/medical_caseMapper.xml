@@ -33,8 +33,5 @@
                      javaType="example.pojo.patient_account"  select="selectByPatient"/>
     </resultMap>
 
-    <select id="selectByPatient" parameterType="String" resultType="example.pojo.patient_account">
-        SELECT * FROM doctor_account WHERE doctor_account_id=#{doctor_account_id}
-    </select>
 
 </mapper>

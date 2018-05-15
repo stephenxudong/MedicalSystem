@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.node">
-    <select id="findByNodeId" parameterType="int" resultType="example.pojo.Node">
-        SELECT * FROM node WHERE node_id=#{node_id}
+<mapper namespace="example.dao.node_edgeMapper">
+    <select id="selectAllNode"  resultType="example.pojo.Node_edge">
+        SELECT * FROM node_edge;
     </select>
 
 </mapper>

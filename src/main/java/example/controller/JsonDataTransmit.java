@@ -2,6 +2,7 @@ package example.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import example.dao.nodeMapper;
 import example.service.GynaecologyLogic;
 import org.apache.commons.logging.*;
 import org.apache.ibatis.session.SqlSession;
@@ -23,9 +24,16 @@ import example.pojo.*;
 @RequestMapping("/dataTrans")
 public class JsonDataTransmit {
     SqlSession session = null;
+    private nodeMapper mapper;
     private HashMap<String,Object> quesAndAns = new HashMap<>();//用来存储每个题回答的问题编号和答案编号
     private static final Log logger = LogFactory.getLog(JsonDataTransmit.class);
     static GynaecologyLogic g=new GynaecologyLogic();
+
+    public JsonDataTransmit()
+    {
+        session = SFactory.getSqlSession();
+        mapper = session.getMapper(nodeMapper.class);
+    }
 
     @RequestMapping(value="/transmitCurrent",method= RequestMethod.POST )
     public
@@ -34,7 +42,7 @@ public class JsonDataTransmit {
         JSONObject temp=new JSONObject();
         //前端是创建json(current)的时候，只需要提供当前的回答的编号（在后台对应的）
         logger.info("=====================================");
-        logger.info("current node is "+ current.toString());
+        logger.info("current nodeMapper is "+ current.toString());
         logger.info("=====================================");
         int ques_index=(int) current.get("ques_index");
         String ques_id = (String) current.get("ques_node_id");
@@ -63,12 +71,15 @@ public class JsonDataTransmit {
         List<Integer> temp = new ArrayList<>();
         g.findNodesById(temp,id);
         List<Node> nodes = new ArrayList<>();
-        session = SFactory.getSqlSession();
-        if(id==0)
-            nodes.add(session.selectOne("mapper.node.findByNodeId", 0));
-        for(int t:temp){
-            Node node = session.selectOne("mapper.node.findByNodeId", t);
-            nodes.add(node);
+        try {
+            if(id==0)
+                nodes.add(mapper.findByNodeId(0));
+            for(int t:temp){
+                Node node = mapper.findByNodeId(t);
+                nodes.add(node);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return nodes;
     }
