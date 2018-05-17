@@ -69,7 +69,7 @@ function addcase(ques,ans){
     for(var a=0;a<ans.length;a++) {
         answerText[a]= "<div class=\"btn-group\" data-toggle=\"buttons\" >\n" +
             "  <label class=\"btn btn-primary active\">\n" +
-            "    <input type=\"radio\" name=\"options\" id='a"+ans[a].node_id+ "' onclick='generate(this)' autocomplete=\"off\">"+ans[a].content+
+            "    <input type=\"radio\" name=\"options\" id='a"+ans[a].node_id+ "' onclick='passAndGet(this)' autocomplete=\"off\">"+ans[a].content+
             "  </label>\n" +
             "</div>";
     }

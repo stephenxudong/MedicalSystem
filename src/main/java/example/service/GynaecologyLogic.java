@@ -27,8 +27,7 @@ public class GynaecologyLogic {
     }
     //顶点结点的数组
     private VNode[] head;
-    //边结点的数组
-    private ENode[] edge;
+
 
     public GynaecologyLogic(){
 
@@ -131,6 +130,11 @@ public class GynaecologyLogic {
 
     }
 
+    public int  findNextBlankQues(int id){
+        return head[id].firstEdge.nodeNumber;
+
+    }
+
     public void construct(List<Node_edge> nodeEdges)
     {
         this.head = new VNode[nodeEdges.size()];
@@ -141,6 +145,7 @@ public class GynaecologyLogic {
             head[i].verNum = Integer.valueOf(nodeEdges.get(i).getNode_id());
             String[] arcs = nodeEdges.get(i).getEdges().split("#");//定义的分隔符
             ENode[] eNodes = new ENode[arcs.length];
+            if(arcs[0].equals("null"))return;
             for (int j = 0; j <arcs.length ; j++)
                 eNodes[j] = new ENode();
             for (int j = 0; j <arcs.length ; j++) {
