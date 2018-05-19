@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface medical_caseMapper {
-    List<medical_case> refreshDir(String doctor_account_id);
+    List<String> refreshDir(String doctor_account_id);
     List<medical_case> refreshContent(String patient_account_id);
     List<medical_case> selectByCaseId(String case_id);
     List<medical_case> checkAppState(@Param(value="doctor_account_id")String doctor_account_id, @Param(value="status")String status);

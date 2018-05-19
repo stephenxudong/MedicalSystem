@@ -1,12 +1,19 @@
 package socket;
 
 import ThreadPool.SocketPool;
+import com.alibaba.fastjson.JSONObject;
+import example.dao.doctor_accountMapper;
+import example.dao.medical_caseMapper;
+import example.pojo.doctor_account;
 import infoHandler.RequestHandler;
 import infoHandler.ResponseEnum;
-import locker.AESEncode;
-
+import infoHandler.susInfo;
+import infolocker.AESEncode;
+import test.SFactory;
 import java.io.*;
 import java.net.Socket;
+import java.util.HashSet;
+import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
 class ThreadSocket implements Runnable {
@@ -16,8 +23,11 @@ class ThreadSocket implements Runnable {
     private BufferedReader reader;
     private BufferedWriter writer;
     private boolean loginState;
-    private int doctorID;
+    private String doctorID;
     private String heartBeatStr = "!@";
+    HashSet<String> doctorIdSet = susInfo.getDoctorIDSet();
+    private doctor_accountMapper doctorHandler = SFactory.getSqlSession().getMapper(doctor_accountMapper.class);
+    private medical_caseMapper medicalHandler = SFactory.getSqlSession().getMapper(medical_caseMapper.class); //todo
 
     public ThreadSocket(Socket socket) {
         threadSocket = socket;
@@ -43,7 +53,7 @@ class ThreadSocket implements Runnable {
                     if (decodeStr.equals(heartBeatStr)); //接受心跳包
                     else if(requestArray[0].equals("$LOGIN$")) //登录
                     {
-                        doctorID = Integer.parseInt(requestArray[1]);
+                        doctorID = requestArray[1];
                         writer.write(ResponseEnum.$LOGIN_STATE$.toString() + loginResponse(requestArray));
                     }
                     else { //数据处理线程，减少try catch块中代码量
@@ -79,20 +89,28 @@ class ThreadSocket implements Runnable {
 
     public String loginResponse(String[] usefulValues)
     {
-        String returnStr = "false";
-        //todo usefulvalues[1] = 用户名, usefualValues[2] = 密码;
-        //todo 查数据库, 如果可以登录, 将其值改为true，
-        //todo 随便改，最后返回字符串，成功为true，失败为false
-        //todo 更改loginstate的值
-        if (loginState)
-            returnStr = "true";
-        return returnStr;
+        doctor_account selectedDoctor = doctorHandler.selectById(usefulValues[1]);
+        if (selectedDoctor != null && selectedDoctor.getPassword().equals(usefulValues[2])) {
+            loginState = true;
+            return "true";
+        }
+        return "false";//todo 医生是否在线
     }
 
     public String checkAppState() {
-        //todo 检查有无上传的新的病例或者没有被下载的
-        //todo 返回病历号json数组的tostring
-        //todo 成功返回病历号，失败就返回failed字符串
+        //检查有无上传的新的病例或者没有被下载的
+        if(doctorIdSet.contains(doctorID)) {
+            List<String> caseIDList = medicalHandler.checkAppState(doctorID, "0");
+            JSONObject obj = new JSONObject();
+            if (caseIDList.size() != 0) {
+                obj.put("caseID", caseIDList);
+            }
+            synchronized (caseIDList)
+            {
+                doctorIdSet.remove(doctorID);
+            }
+            return obj.toString();
+        }
         return "failed";
     }
 
