@@ -35,7 +35,7 @@
 
 
 
-    <resultMap id="patientResultMap" type="example.pojo.medical_case">
+    <resultMap id="patientResultMap" type="example.pojo.medicalCase.GynaecologyCase">
         <id property="id" column="case_id"/>
         <result property="patient_account_id" column="patient_account_id"/>
         <result property="doctor_account_id" column="doctor_account_id"/>
@@ -44,7 +44,7 @@
                      javaType="example.pojo.Patient_account" select="selectByPatient"/>
     </resultMap>
 
-    <resultMap id="doctorResultMap" type="example.pojo.medical_case">
+    <resultMap id="doctorResultMap" type="example.pojo.medicalCase.GynaecologyCase">
         <id property="id" column="case_id"/>
         <result property="patient_account_id" column="patient_account_id"/>
         <result property="doctor_account_id" column="doctor_account_id"/>

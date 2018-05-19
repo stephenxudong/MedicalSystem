@@ -1,5 +1,9 @@
 package example.pojo;
 
+import example.pojo.medicalCase.Case;
+import example.pojo.medicalCase.GynaecologyCase;
+
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Patient_account {
@@ -7,7 +11,7 @@ public class Patient_account {
     private String patient_name;
     private String patient_phone_number;
     private String patient_identification_id;
-    private List<medical_case> medical_caselist;
+    private List<Case> medical_caselist;
     public Patient_account(){
         super();
     }
@@ -35,7 +39,7 @@ public class Patient_account {
         this.patient_identification_id = patient_identification_id;
     }
 
-    public void setMedical_caselist(List<medical_case> medical_caselist) {
+    public void setMedical_caselist(List<Case> medical_caselist) {
         this.medical_caselist = medical_caselist;
     }
 
@@ -55,7 +59,7 @@ public class Patient_account {
         return patient_phone_number;
     }
 
-    public List<medical_case> getMedical_caselist() {
+    public List<Case> getMedical_caselist() {
         return medical_caselist;
     }
 }

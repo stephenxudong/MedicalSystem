@@ -1,5 +1,6 @@
 package infoHandler;
 
+import example.dao.GynaecologyCaseMapper;
 import infolocker.AESEncode;
 import test.SFactory;
 import com.alibaba.fastjson.JSONObject;
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class RequestHandler implements Runnable{
-    private static medical_caseMapper databaseHandler = SFactory.getSqlSession().getMapper(medical_caseMapper.class);
+    private static GynaecologyCaseMapper databaseHandler = SFactory.getSqlSession().getMapper(GynaecologyCaseMapper.class);
     private BufferedWriter writer;
     private String[] requestArray;
     private String doctorID;
@@ -83,9 +84,9 @@ public class RequestHandler implements Runnable{
         if (!loginState)
             return "FuckYou，hacker";
 
-        List<String> caseIDLsit = databaseHandler.refreshDir(doctorID);
+       // List<String> caseIDLsit = databaseHandler.refreshDir(doctorID);
         JSONObject obj = new JSONObject();
-        obj.put("caseID", caseIDLsit);
+        //obj.put("caseID", caseIDLsit);
         return obj.toString();
     }
 
@@ -108,7 +109,7 @@ public class RequestHandler implements Runnable{
         //把数据库中对应的病历状态设置为已查看
         JSONObject obj = (JSONObject) JSONObject.parse(usefulValues[0]);
         List<String> caseIDList = (List<String>) obj.get("caseID");
-        for (String caseID : caseIDList)
-            databaseHandler.refreshReportStat("1", caseID);
+//        for (String caseID : caseIDList)
+//            databaseHandler.refreshReportStat("1", caseID);
     }
 }

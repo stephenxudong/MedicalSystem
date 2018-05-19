@@ -22,10 +22,10 @@
     <resultMap id="medicalCaseResultMap" type="example.pojo.Patient_account">
         <id property="id" column="patient_account_id"/>
         <collection property="medical_caselist" javaType="ArrayList"
-                    column="id" ofType="example.pojo.medical_case"
+                    column="id" ofType="example.pojo.medicalCase.GynaecologyCase"
                     select="selectCaseByPatientId"   />
     </resultMap>
-    <select id="selectCaseByPatientId" resultType="example.pojo.medical_case">
+    <select id="selectCaseByPatientId" resultType="example.pojo.medicalCase.GynaecologyCase">
         SELECT * FROM medical_case WHERE patient_account_id=#{patient_account_id}
     </select>
 

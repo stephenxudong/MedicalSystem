@@ -43,7 +43,12 @@ public class JsonDataTransmit {
         {
             String identificationId = (String)current.get("IdtId");
             Pair<String,String> pair = new Pair<>("identificationId",identificationId);
-            userInfo.get("user").put("idCardId",identificationId);
+            if(userInfo.get(currentUser)==null)
+            {
+                HashMap<String,Object> currentUserInfo = new HashMap<>();//储存用户信息的map
+                userInfo.put(currentUser,currentUserInfo);
+            }
+            userInfo.get(currentUser).put("idCardId",identificationId);
         }
         if(ques_index!=0)
         {
@@ -51,13 +56,8 @@ public class JsonDataTransmit {
 //            retrunAnswer.setQues_content(ques_content);
 //            retrunAnswer.setAnswer_content(answer_content);
 //            retrunAnswer.setQues_index(ques_index);
-            if(userInfo.get(currentUser)==null)
-            {
 
-                HashMap<String,Object> currentUserInfo = new HashMap<>();//储存用户信息的map
-                userInfo.put(currentUser,currentUserInfo);
-            }
-            else if(userInfo.get(currentUser).get("current_ques_ans")==null)
+            if(userInfo.get(currentUser).get("current_ques_ans")==null)
             {
                 //用来存储每个题回答的问题编号和答案编号
                 List<Pair<String,String>> pairs = new ArrayList<>();

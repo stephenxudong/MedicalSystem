@@ -2,8 +2,10 @@ package socket;
 
 import ThreadPool.SocketPool;
 import com.alibaba.fastjson.JSONObject;
-import example.dao.doctor_accountMapper;
-import example.pojo.doctor_account;
+import example.dao.Doctor_accountMapper;
+import example.dao.GynaecologyCaseMapper;
+import example.pojo.Doctor_account;
+import example.pojo.medicalCase.GynaecologyCase;
 import infoHandler.RequestHandler;
 import infoHandler.ResponseEnum;
 import infoHandler.susInfo;
@@ -25,8 +27,8 @@ class ThreadSocket implements Runnable {
     private String doctorID;
     private String heartBeatStr = "!@";
     HashSet<String> doctorIdSet = susInfo.getDoctorIDSet();
-    private doctor_accountMapper doctorHandler = SFactory.getSqlSession().getMapper(doctor_accountMapper.class);
-    private medical_caseMapper medicalHandler = SFactory.getSqlSession().getMapper(medical_caseMapper.class); //todo
+    private Doctor_accountMapper doctorHandler = SFactory.getSqlSession().getMapper(Doctor_accountMapper.class);
+    private GynaecologyCaseMapper medicalHandler = SFactory.getSqlSession().getMapper(GynaecologyCaseMapper.class); //todo
 
     public ThreadSocket(Socket socket) {
         threadSocket = socket;
@@ -88,8 +90,8 @@ class ThreadSocket implements Runnable {
 
     public String loginResponse(String[] usefulValues)
     {
-        doctor_account selectedDoctor = doctorHandler.selectById(usefulValues[1]);
-        if (selectedDoctor != null && selectedDoctor.getPassword().equals(usefulValues[2])) {
+        Doctor_account selectedDoctor = doctorHandler.findByDoctorId(usefulValues[1]);
+        if (selectedDoctor != null && selectedDoctor.getDoctor_password().equals(usefulValues[2])) {
             loginState = true;
             return "true";
         }
@@ -98,18 +100,18 @@ class ThreadSocket implements Runnable {
 
     public String checkAppState() {
         //检查有无上传的新的病例或者没有被下载的
-        if(doctorIdSet.contains(doctorID)) {
-            List<String> caseIDList = medicalHandler.checkAppState(doctorID, "0");
-            JSONObject obj = new JSONObject();
-            if (caseIDList.size() != 0) {
-                obj.put("caseID", caseIDList);
-            }
-            synchronized (caseIDList)
-            {
-                doctorIdSet.remove(doctorID);
-            }
-            return obj.toString();
-        }
+//        if(doctorIdSet.contains(doctorID)) {
+//            List<String> caseIDList = medicalHandler.checkAppState(doctorID, "0");
+//            JSONObject obj = new JSONObject();
+//            if (caseIDList.size() != 0) {
+//                obj.put("caseID", caseIDList);
+//            }
+//            synchronized (caseIDList)
+//            {
+//                doctorIdSet.remove(doctorID);
+//            }
+//            return obj.toString();
+//        }
         return "failed";
     }
 
