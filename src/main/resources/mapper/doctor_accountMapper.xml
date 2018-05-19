@@ -28,4 +28,16 @@
          column="id" ofType="example.pojo.medical_case"
           select="selectCaseByDoctoId"   />
     </resultMap>
+<<<<<<< HEAD
+=======
+
+    <select id="selectCaseByDoctorId" resultType="example.pojo.medical_case">
+        SELECT * FROM medical_case WHERE doctor_account_id=#{doctor_account_id}
+    </select>
+
+    <select id="loginResponse"  parameterType="String" resultType="example.pojo.doctor_account">
+       SELECT * FROM doctor_account WHERE doctor_account_id=#{doctor_account_id}
+    </select>
+
+>>>>>>> refs/remotes/origin/master
 </mapper>

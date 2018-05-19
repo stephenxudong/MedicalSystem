@@ -1,4 +1,4 @@
-package locker;
+package infolocker;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;

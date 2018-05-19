@@ -4,12 +4,14 @@ public class Doctor_account {
     private String doctor_account_id;
     private String doctor_name;
     private String department;
-
-
-
     private String status;
     private List<medical_case> medical_caselist;
+<<<<<<< HEAD
     public Doctor_account(){
+=======
+    private String doctor_password;
+    public doctor_account(){
+>>>>>>> refs/remotes/origin/master
         super();
     }
     public Doctor_account(String doctor_account_id, String doctor_name, String department){
@@ -55,5 +57,13 @@ public class Doctor_account {
 
     public List<medical_case> getMedical_caselist() {
         return medical_caselist;
+    }
+
+    public String getDoctor_password() {
+        return doctor_password;
+    }
+
+    public void setDoctor_password(String doctor_password) {
+        this.doctor_password = doctor_password;
     }
 }

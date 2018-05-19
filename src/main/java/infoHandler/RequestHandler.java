@@ -1,17 +1,20 @@
 package infoHandler;
 
-import locker.AESEncode;
-
+import infolocker.AESEncode;
+import test.SFactory;
+import com.alibaba.fastjson.JSONObject;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class RequestHandler implements Runnable{
+    private static medical_caseMapper databaseHandler = SFactory.getSqlSession().getMapper(medical_caseMapper.class);
     private BufferedWriter writer;
     private String[] requestArray;
-    private int doctorID;
+    private String doctorID;
     private boolean loginState;
 
-    public RequestHandler(String[] requestArray, BufferedWriter writer, boolean loginState, int doctorID)
+    public RequestHandler(String[] requestArray, BufferedWriter writer, boolean loginState, String doctorID)
     {
         this.requestArray = requestArray;
         this.writer = writer;
@@ -52,7 +55,7 @@ public class RequestHandler implements Runnable{
                 rentunMess = ResponseEnum.$UPDATE_STATE$.toString() + updateResponse(usefulValues);
                 break;
             case "$REFRESH_DIR$":
-                rentunMess = ResponseEnum.$RES_DIR$.toString() + refreshDir();
+                rentunMess = ResponseEnum.$RES_DIR$.toString() + refreshDir(doctorID);
                 break;
             case "$REFRESH_CONTENT$":
                 rentunMess = ResponseEnum.$RES_CONTENT$.toString() + refreshContent(usefulValues);
@@ -68,20 +71,22 @@ public class RequestHandler implements Runnable{
     {
         if (!loginState)
             return "FuckYou，hacker";
+
+
         //todo 长度为1，放入的只有json键值对
         //todo 数据库保存，返回字符串，成功为"true"，失败为"false"
         return "";
     }
 
-    public String refreshDir()
+    public String refreshDir(String doctorID)
     {
         if (!loginState)
             return "FuckYou，hacker";
 
-        //todo 函数目的：响应手动刷新目录的请求 把doctorid对应的病历号全弄出来
-        //todo 返回该医生对应的所有病例单号，放入json数组中，eg [2016302580225,201630258223,2016302580224,...]
-        //todo 把json对象封装为string
-        return "";
+        List<String> caseIDLsit = databaseHandler.refreshDir(doctorID);
+        JSONObject obj = new JSONObject();
+        obj.put("caseID", caseIDLsit);
+        return obj.toString();
     }
 
     public String refreshContent(String[] usefulValues)
@@ -89,15 +94,21 @@ public class RequestHandler implements Runnable{
         if (!loginState)
             return "FuckYou，hacker";
 
-        //todo 函数目的：响应手动刷新病历的请求，把参数中的病历号对应的病历返回
+        //函数目的：响应手动刷新病历的请求，把参数中的病历号对应的病历返回
+        JSONObject obj = (JSONObject) JSONObject.parse(usefulValues[0]);
+        List<String> caseIDList = (List<String>) obj.get("caseID");
         //todo 返回客户端索要的病历内容
         //todo 返回内容需要封装为string
+
         return "";
     }
 
     public void refreshReportStat(String[] usefulValues)
     {
-        //todo usefulValues存放客户端新接收的病历内容（对应refreshContent）的病历单号，
-        //todo 接到后就把数据库中对应的病历状态设置为已查看
+        //把数据库中对应的病历状态设置为已查看
+        JSONObject obj = (JSONObject) JSONObject.parse(usefulValues[0]);
+        List<String> caseIDList = (List<String>) obj.get("caseID");
+        for (String caseID : caseIDList)
+            databaseHandler.refreshReportStat("1", caseID);
     }
 }
