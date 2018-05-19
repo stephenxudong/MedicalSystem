@@ -1,17 +1,15 @@
 package example.pojo;
+import example.pojo.medicalCase.Case;
+
 import java.util.List;
 public class Doctor_account {
     private String doctor_account_id;
     private String doctor_name;
     private String department;
     private String status;
-    private List<medical_case> medical_caselist;
-<<<<<<< HEAD
-    public Doctor_account(){
-=======
+    private List<Case> medical_caselist;
     private String doctor_password;
-    public doctor_account(){
->>>>>>> refs/remotes/origin/master
+    public Doctor_account(){
         super();
     }
     public Doctor_account(String doctor_account_id, String doctor_name, String department){
@@ -32,7 +30,7 @@ public class Doctor_account {
         this.department = department;
     }
 
-    public void setMedical_caselist(List<medical_case> medical_caselist) {
+    public void setMedical_caselist(List<Case> medical_caselist) {
         this.medical_caselist = medical_caselist;
     }
 
@@ -55,7 +53,7 @@ public class Doctor_account {
         this.status = status;
     }
 
-    public List<medical_case> getMedical_caselist() {
+    public List<Case> getMedical_caselist() {
         return medical_caselist;
     }
 
