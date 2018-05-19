@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.GynaecologyCaseMapper">
+    <select id="findByCaseId" parameterType="String" resultType="example.pojo.medicalCase.GynaecologyCase">
+        SELECT * FROM medical_case WHERE case_id=#{case_id}
+    </select>
+
+    <insert id="insertGynaecologyCase" parameterType="example.pojo.medicalCase.GynaecologyCase" useGeneratedKeys="true"  >
+        INSERT INTO medical_case  VALUES (#{case_id},#{status},#{main_case},#{present_history},#{past_history},
+        #{doctor_account_id},#{patient_account_id},#{personal_case},#{marital_history},#{menstruation_history},#{bearing_history},
+        #{family_history},#{physical_examination})
+    </insert>
+
+
+    <select id="selectGynaecologyCaseByDoctorId" parameterType="String" resultType="String">
+        SELECT case_id FROM  GynaecologyCase WHERE doctor_account_id=#{doctor_account_id}
+    </select>
+
+
+    <select id="selectByPatient" parameterType="String" resultType="example.pojo.Patient_account">
+        SELECT * FROM Patient_account WHERE patient_account_id=#{patient_account_id}
+    </select>
+
+
+    <select id="selectUndeliveredGynaecologyCase" parameterType="String" resultType="String">
+        SELECT case_id FROM GynaecologyCase WHERE doctor_account_id=#{doctor_account_id} AND status="false"
+    </select>
+
+    <update id="updateGynaecologyCaseStatus" parameterType="String">
+        UPDATE GynaecologyCase SET status="true" WHERE  case_id=#{case_id}
+    </update>
+
+
+
+
+    <resultMap id="patientResultMap" type="example.pojo.medical_case">
+        <id property="id" column="case_id"/>
+        <result property="patient_account_id" column="patient_account_id"/>
+        <result property="doctor_account_id" column="doctor_account_id"/>
+        <result property="file_path" column="file_path"/>
+        <association property="Patient_account" column="patient_name"
+                     javaType="example.pojo.Patient_account" select="selectByPatient"/>
+    </resultMap>
+
+    <resultMap id="doctorResultMap" type="example.pojo.medical_case">
+        <id property="id" column="case_id"/>
+        <result property="patient_account_id" column="patient_account_id"/>
+        <result property="doctor_account_id" column="doctor_account_id"/>
+        <result property="file_path" column="file_path"/>
+        <association property="Doctor_account" column="doctor_name"
+                     javaType="example.pojo.Patient_account" select="selectByPatient"/>
+    </resultMap>
+
+
+</mapper>

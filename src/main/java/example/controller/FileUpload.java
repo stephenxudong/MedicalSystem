@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import example.pojo.Info;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.UUID;
 
-import example.pojo.User;
+
 import org.apache.ibatis.session.SqlSession;
 import test.SFactory;
 import javax.servlet.http.HttpSession;
@@ -47,21 +47,21 @@ public class FileUpload {
                  tempFile.createNewFile();
              }
              cover.transferTo(tempFile);
-             Info info=new Info();
-             User user=(User)session.getAttribute("user");
-             SqlSession session1 = SFactory.getSqlSession();
-             User temp=session1.selectOne("mapper.UserMapper.findByName",user.getUsername());
-             info.setUser_id(temp.getId());
-             info.setUser(user);
-             info.setUser_info("/video/" + tempFile1.getName());
-             logger.info("/video/" + tempFile1.getName());
-             info.setVideo_name(video.getOriginalFilename());
-             info.setVideo_img("/videoimg/" + tempFile.getName());
-             logger.info("video/" + tempFile.getName());
-             session.setAttribute("info",info);
-             session1.insert("mapper.InfoMapper.insertInfo",info);
-             session1.commit();
-             session1.close();
+//             Info info=new Info();
+//             User user=(User)session.getAttribute("user");
+//             SqlSession session1 = SFactory.getSqlSession();
+//             User temp=session1.selectOne("mapper.UserMapper.findByName",user.getUsername());
+//             info.setUser_id(temp.getId());
+//             info.setUser(user);
+//             info.setUser_info("/video/" + tempFile1.getName());
+//             logger.info("/video/" + tempFile1.getName());
+//             info.setVideo_name(video.getOriginalFilename());
+//             info.setVideo_img("/videoimg/" + tempFile.getName());
+//             logger.info("video/" + tempFile.getName());
+//             session.setAttribute("info",info);
+//             session1.insert("mapper.InfoMapper.insertInfo",info);
+//             session1.commit();
+//             session1.close();
              return "fir";
          }catch (Exception e){
              e.printStackTrace();

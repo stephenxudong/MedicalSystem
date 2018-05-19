@@ -2,17 +2,17 @@ package example.pojo;
 
 import java.util.List;
 
-public class patient_account {
+public class Patient_account {
     private String patient_account_id;
     private String patient_name;
     private String patient_phone_number;
     private String patient_identification_id;
     private List<medical_case> medical_caselist;
-    public patient_account(){
+    public Patient_account(){
         super();
     }
 
-    public patient_account(String patient_account_id,String patient_name,String patient_phone_number,String patient_identification_id){
+    public Patient_account(String patient_account_id, String patient_name, String patient_phone_number, String patient_identification_id){
       this.patient_account_id=patient_account_id;
       this.patient_name=patient_name;
       this.patient_phone_number=patient_phone_number;

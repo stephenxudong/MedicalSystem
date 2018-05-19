@@ -12,7 +12,6 @@
          <setting name="autoMappingBehavior" value="NONE"/>
      </settings>-->
     <typeAliases>
-        <typeAlias type="example.pojo.User" alias="User"/>
         <package name="example.pojo"/>
     </typeAliases>
     <environments default="development">
@@ -28,7 +27,7 @@
     </environments>
     <mappers>
         <mapper resource="mapper/doctor_accountMapper.xml"></mapper>
-        <mapper resource="mapper/medical_caseMapper.xml"></mapper>
+        <!--<mapper resource="mapper/gynaecologyCaseMapper.xml"></mapper>-->
         <mapper resource="mapper/patient_accountMapper.xml"></mapper>
         <mapper resource="mapper/nodeMapper.xml"></mapper>
         <mapper resource="mapper/node_edgeMapper.xml"></mapper>

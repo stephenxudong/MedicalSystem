@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import example.pojo.User;
 import org.apache.ibatis.session.SqlSession;
 import test.SFactory;
 
@@ -27,18 +26,18 @@ public class UserRegister {
                            @RequestParam("signup_form_usernumber") String signup_form_usernumber,
                            @RequestParam("signup_form_usernumber") String signup_form_password, Model model,
                            HttpSession session){
-        logger.info("register方法调用中");
-       User user=new User();
-       user.setUsername(signup_form_username);
-       user.setMailbox(signup_form_email);
-       user.setNumber(signup_form_usernumber);
-       user.setPassword(signup_form_password);
-       model.addAttribute("user",user);
-      session.setAttribute("user",user);
-        SqlSession session1 = SFactory.getSqlSession();
-        session1.insert("mapper.UserMapper.insertUser",user);
-        session1.commit();
-        session1.close();
+//        logger.info("register方法调用中");
+//       User user=new User();
+//       user.setUsername(signup_form_username);
+//       user.setMailbox(signup_form_email);
+//       user.setNumber(signup_form_usernumber);
+//       user.setPassword(signup_form_password);
+//       model.addAttribute("user",user);
+//      session.setAttribute("user",user);
+//        SqlSession session1 = SFactory.getSqlSession();
+//        session1.insert("mapper.UserMapper.insertUser",user);
+//        session1.commit();
+//        session1.close();
         return "fir";
     }
 

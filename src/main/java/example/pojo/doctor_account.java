@@ -1,6 +1,6 @@
 package example.pojo;
 import java.util.List;
-public class doctor_account {
+public class Doctor_account {
     private String doctor_account_id;
     private String doctor_name;
     private String department;
@@ -9,10 +9,10 @@ public class doctor_account {
 
     private String status;
     private List<medical_case> medical_caselist;
-    public doctor_account(){
+    public Doctor_account(){
         super();
     }
-    public doctor_account(String doctor_account_id,String doctor_name,String department){
+    public Doctor_account(String doctor_account_id, String doctor_name, String department){
         this.doctor_account_id=doctor_account_id;
         this.doctor_name=doctor_name;
         this.department=department;

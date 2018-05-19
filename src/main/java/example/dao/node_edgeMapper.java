@@ -4,6 +4,6 @@ import example.pojo.Node_edge;
 
 import java.util.List;
 
-public interface node_edgeMapper {
+public interface Node_edgeMapper {
     List<Node_edge> selectAllNode();
 }

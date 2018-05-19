@@ -1,20 +1,27 @@
-package example.medicalCase;
+package example.pojo.medicalCase;
 
 public class GynaecologyCase extends Case {
 
-    private String personal_case;
-    private String marital_history;
+    private String personal_case;//个人史
+    private String marital_history;//婚姻史
     private String menstruation_history;
     private String bearing_history;
     private String family_history;
     private String physical_examination;
 
-    public GynaecologyCase(String name, String main_case, String present_history,
-                           String past_history, String personal_case,
-                           String marital_history, String menstruation_history,
-                           String bearing_history, String family_history,
-                           String physical_examination) {
-        super(name, main_case, present_history, past_history);
+    public GynaecologyCase(String case_id, String status,
+                           String main_case, String present_history,
+                           String past_history, String doctor_account_id,
+                           String patient_account_id, String patient_name,
+                           String patient_identification_id,
+                           String patient_phone_number, String sex,
+                           String personal_case, String marital_history,
+                           String menstruation_history, String bearing_history,
+                           String family_history, String physical_examination) {
+        super(case_id, status, main_case,
+                present_history, past_history,
+                doctor_account_id, patient_account_id, patient_name,
+                patient_identification_id, patient_phone_number, sex);
         this.personal_case = personal_case;
         this.marital_history = marital_history;
         this.menstruation_history = menstruation_history;
@@ -23,13 +30,8 @@ public class GynaecologyCase extends Case {
         this.physical_examination = physical_examination;
     }
 
-    public GynaecologyCase(String personal_case, String marital_history, String menstruation_history, String bearing_history, String family_history, String physical_examination) {
-        this.personal_case = personal_case;
-        this.marital_history = marital_history;
-        this.menstruation_history = menstruation_history;
-        this.bearing_history = bearing_history;
-        this.family_history = family_history;
-        this.physical_examination = physical_examination;
+    public GynaecologyCase(){
+        super();
     }
 
     public String getPersonal_case() {

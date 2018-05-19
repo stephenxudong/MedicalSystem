@@ -2,7 +2,6 @@ package example.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import example.pojo.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 public class MainIntercepter implements HandlerInterceptor{
@@ -35,16 +34,16 @@ public class MainIntercepter implements HandlerInterceptor{
             }
         }
         if(!flag){
-            User user=(User)request.getSession().getAttribute("user");
-            if(user==null){
-                System.out.println("MainInterceptor 拦截成功");
-                request.setAttribute("message","请先登陆");
-                request.getRequestDispatcher("login").forward(request,reponse);
-            }
-            else {
-                System.out.println("MainInterceptor 拦截通行");
-                flag=true;
-            }
+//            User user=(User)request.getSession().getAttribute("user");
+//            if(user==null){
+//                System.out.println("MainInterceptor 拦截成功");
+//                request.setAttribute("message","请先登陆");
+//                request.getRequestDispatcher("login").forward(request,reponse);
+//            }
+//            else {
+//                System.out.println("MainInterceptor 拦截通行");
+//                flag=true;
+//            }
         }
         return flag;
     }
