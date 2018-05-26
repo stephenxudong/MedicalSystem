@@ -8,9 +8,13 @@
 
   <!--welcome pages-->
   <welcome-file-list>
-    <welcome-file>/view/illcase.jsp</welcome-file>
+    <welcome-file>/view/login.jsp</welcome-file>
   </welcome-file-list>
 
+
+  <session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
 
   <!--配置springmvc DispatcherServlet-->
   <servlet>

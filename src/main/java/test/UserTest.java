@@ -1,59 +1,45 @@
 package test;
-import example.dao.GynaecologyCaseMapper;
-import example.pojo.Node;
-import example.pojo.medicalCase.GynaecologyCase;
+import example.dao.Patient_accountMapper;
+import example.pojo.Patient_account;
+import example.uitl.HttpUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.apache.ibatis.session.SqlSession;
-import example.service.GynaecologyLogic;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserTest {
     //static GynaecologyLogic g=new GynaecologyLogic();
     public static void main(String[] args) {
-        SqlSession session= null;
-        GynaecologyCase gynaecologyCase = null;
-           try
-           {
-               session = SFactory.getSqlSession();
-               List<Integer> temp = new ArrayList<>();
-               GynaecologyCaseMapper mapper = session.getMapper(GynaecologyCaseMapper.class);
-                gynaecologyCase = mapper.findByCaseId("1");
-                List<String> ggcase = mapper.selectUndeliveredGynaecologyCase("1");
-//                ggcase.setCase_id("2");
-//                ggcase.setDoctor_account_id("1");
-//                ggcase.setPatient_account_id("1");
-//                ggcase.setBearing_history("one child");
-//                ggcase.setStatus("false");
-//                ggcase.setMain_case("no some case");
-//                ggcase.setPresent_history("none present");
-//                ggcase.setPast_history("no no past");
-//                ggcase.setPersonal_case("一点小问题");
-//                mapper.insertGynaecologyCase(ggcase);
-                session.commit();
-           }catch (Exception e)
-           {
-               e.printStackTrace();
-           }finally {
-               session.close();
-           }
-
-           //g.findNodesById(temp,3);
-           List<Node> nodes = new ArrayList<>();
-//         for(int t:temp){
-//            Node node = session.selectOne("mapper.NodeMapper.findByNodeId", t);
-//            nodes.add(node);
-//         }
-//            User user = session.selectOne("mapper.NodeMapper.findByNodeId", 7);
-//            session.commit();
-//            System.out.println(user.getUsername());
-//         User user1;
-//         SqlSession session1 = SFactory.getSqlSession();
-//          user1=session1.selectOne("mapper.UserMapper.findByName","ANNA");
-//        session1.commit();
-//        System.out.println(user1.getPassword());
-//        session1.close();
-//            session.close();
-
+        SqlSession session = SFactory.getSqlSession();
+        Patient_accountMapper mapper = session.getMapper(Patient_accountMapper.class);
+        Patient_account user=mapper.selectByIdentiId("420624199902165131");
+//        String host = "http://cowsms.market.alicloudapi.com";
+//        String path = "/intf/smsapi";
+//        String method = "GET";
+//        String appcode = "6bc92f85b3fe497f8ce6052a239bfb96";
+//        Map<String, String> headers = new HashMap<String, String>();
+//        //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
+//        headers.put("Authorization", "APPCODE " + appcode);
+//        Map<String, String> querys = new HashMap<>();
+//
+//        String mobile = "18727069828";
+//        int num=(int)(Math.random()*9000)+1000;
+//        String paras = String.valueOf(num)+",1";
+//
+//        querys.put("mobile", mobile);
+//        querys.put("paras", paras);
+//        querys.put("sign", "医疗系统");
+//        querys.put("tpid", "009");
+//        HttpResponse response = null;
+//        String msg = "OK";
+//        try {
+//            response = HttpUtils.doGet(host, path, method, headers, querys);
+//            System.out.println(response.toString());
+//            System.out.println(EntityUtils.toString(response.getEntity()));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

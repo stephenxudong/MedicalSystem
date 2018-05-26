@@ -15,7 +15,7 @@
 
     <update id="loginChangeStatus" parameterType="example.pojo.Doctor_account">
         UPDATE Doctor_account SET status='true'
-        WHERE doctor_account_id=#{doctot_account_id}
+        WHERE doctor_account_id=#{doctor_account_id}
     </update>
 
     <insert id="insertDoctor" parameterType="example.pojo.Doctor_account" useGeneratedKeys="true"  >
@@ -25,8 +25,8 @@
     <resultMap id="medicalCaseResultMap" type="example.pojo.Doctor_account">
         <id property="id" column="doctor_account_id"/>
         <collection property="medical_caselist" javaType="ArrayList"
-         column="id" ofType="example.pojo.medical_case"
-          select="selectCaseByDoctoId"   />
+         column="id" ofType="example.pojo.medicalCase.GynaecologyCase"
+          select="selectUndeliveredGynaecologyCase"   />
     </resultMap>
 
 
