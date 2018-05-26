@@ -3,6 +3,8 @@ package example.controller;
 import com.alibaba.fastjson.JSONObject;
 import example.bulidMedicalCase.Convert;
 import example.dao.QueryNext;
+import example.pojo.medicalCase.Case;
+import example.service.GynaecologyLogic;
 import javafx.util.Pair;
 import org.apache.commons.logging.*;
 import org.springframework.stereotype.Controller;
@@ -20,18 +22,44 @@ import example.pojo.*;
 public class JsonDataTransmit {
     private HashMap<String,HashMap<String,Object>> userInfo = new HashMap<>();
     //用username作为key来存储quesAndAns
-
     private static final Log logger = LogFactory.getLog(JsonDataTransmit.class);
+    private QueryNext queryNext=null;
 
 
-    @RequestMapping(value="/transmitCurrent",method= RequestMethod.POST )
+    @RequestMapping(value="/transmit",method= RequestMethod.POST )
     public
-    @ResponseBody String upload(@RequestBody  Map<String,Object> current,HttpSession session
-    )throws Exception{
+    @ResponseBody String upload1(@RequestBody  Map<String,Object> current)throws Exception{
         logger.info("==================================================================");
         logger.info("served by Thread "+Thread.currentThread().getName());
         logger.info("current NodeMapper is "+ current.toString());
         logger.info("==================================================================");
+        JSONObject rtn = new JSONObject();
+        String msg = (String)current.get("msg");
+        if(msg.equals("first"))
+        {
+            queryNext = new QueryNext(Integer.valueOf((String) current.get("model_id")));
+            List<Node> nodes = queryNext.getModelNodes();
+            GynaecologyLogic g = new GynaecologyLogic();
+            VNode[] model =g.getHead();
+            rtn.put("nodes",nodes);
+            rtn.put("model",model);
+            return rtn.toJSONString();
+
+        }
+
+        return rtn.toJSONString();
+    }
+
+
+    @RequestMapping(value="/transmitCurrent",method= RequestMethod.POST )
+    public
+    @ResponseBody String upload(@RequestBody  Map<String,Object> current)throws Exception{
+        logger.info("==================================================================");
+        logger.info("served by Thread "+Thread.currentThread().getName());
+        logger.info("current NodeMapper is "+ current.toString());
+        logger.info("==================================================================");
+
+        if(queryNext==null) queryNext = new QueryNext(1);
         JSONObject temp=new JSONObject();
         int ques_index=(int) current.get("ques_index");
         //此项id也就是编号，通过这个编号在模型中查找下一个问题和答案
@@ -63,7 +91,8 @@ public class JsonDataTransmit {
                 List<Pair<String,String>> pairs = new ArrayList<>();
                 userInfo.get(currentUser).put("current_ques_ans",pairs);
             }
-            userInfo.get(currentUser).put(ques_content,answer_content);
+            List<Pair<String,String>> pairs = (List<Pair<String,String>>)userInfo.get(currentUser).get("current_ques_ans");
+            pairs.add(new Pair<>(ques_content,answer_content));
         }
         if(current.get("msg").equals("over"))//前段表示是最后一个问题和回答
         {
@@ -71,7 +100,7 @@ public class JsonDataTransmit {
             Convert.convert(currentUserInfo);//传输给处理病历的类，处理之后存数据库
             return null;
         }
-        List<Node> nodes = QueryNext.findNext(Integer.valueOf(ans_id));
+        List<Node> nodes = queryNext.findNext(Integer.valueOf(ans_id));
         temp.put("data",nodes);
         temp.put("status","1");
         if((nodes.size()>1&&nodes.get(0).getComment().equals("last_ques"))||nodes.size()==0)
@@ -80,7 +109,6 @@ public class JsonDataTransmit {
         logger.info(temp.toString());
         return temp.toJSONString();
     }
-
     private class ReturnAnswer
     {
         private String answer_content;

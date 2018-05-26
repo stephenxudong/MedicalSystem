@@ -6,5 +6,8 @@
     <select id="findByNodeId" parameterType="int" resultType="example.pojo.Node">
         SELECT * FROM node WHERE node_id=#{node_id}
     </select>
+    <select id="selectNodesByModelId" parameterType="int" resultType="example.pojo.Node">
+        SELECT * FROM node WHERE model_id=#{model_id}
+    </select>
 
 </mapper>

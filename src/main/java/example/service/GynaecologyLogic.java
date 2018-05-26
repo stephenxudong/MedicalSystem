@@ -3,27 +3,21 @@ package example.service;
 import java.util.List;
 
 import example.dao.Node_edgeMapper;
+import example.pojo.ENode;
 import example.pojo.Node_edge;
-import example.sqlsession.SFactory;
+import example.pojo.VNode;
+import example.uitl.SFactory;
 import org.apache.ibatis.session.SqlSession;
 
 public class GynaecologyLogic {
     private SqlSession session;
     private Node_edgeMapper mapper;
     //链表顶点
-    private class ENode{
-        //邻接顶点的序号
-        int nodeNumber;
-        //下一个边结点
-        ENode nextEdge;
+
+    public VNode[] getHead() {
+        return head;
     }
-    //表顶点
-    private class VNode {
-        //顶点序号
-        int verNum;
-        //链表头指针
-        ENode firstEdge;
-    }
+
     //顶点结点的数组
     private VNode[] head;
 
@@ -33,7 +27,6 @@ public class GynaecologyLogic {
         mapper = session.getMapper(Node_edgeMapper.class);
         List<Node_edge> nodeEdges = mapper.selectAllNode();
         construct(nodeEdges);
-
     }
 
     /**
@@ -90,3 +83,5 @@ public class GynaecologyLogic {
     }
 
 }
+
+
