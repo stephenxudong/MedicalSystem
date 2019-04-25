@@ -1,0 +1,131 @@
+body{
+    background-image:url(../img/bg.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size: cover
+}
+.all{
+    position: relative;
+    margin-left: 20px;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-bottom: 300px;
+}
+.part{
+    height: 360px;
+    position: relative;
+    padding: 30px 10px 10px 10px;
+    width: 100%;
+    margin-top: 10px;
+    opacity: 0;
+}
+.question{
+    position: relative;
+    color: #4a644f;
+    font-family: "Microsoft Yahei";
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 30px;
+    font-weight: 600;
+}
+.answer{
+    font-family: 微软雅黑;
+}
+hr{
+    width: 100%;
+    margin-bottom: 5px;
+}
+input.labelauty + label { font: 12px "Microsoft Yahei";}
+input[type="checkbox"], input[type="radio"]{
+    line-height: 40px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+li { margin: 5px 0;}
+label{
+    font-weight: 500;
+    font-size: 20px;
+    color: #615662;
+}
+
+.spanit{
+    margin-left: 10px;
+}
+
+#firstquestion .option-input{
+    background-color: #cdd2cf;
+}
+#firstquestion .modal-content{
+    background-color: #b7dfbb;
+}
+#firstquestion .form-control{
+    background-color: #eafdf6;
+}
+#firstquestion .btn-default{
+    background-color: #e7ffe9;
+}
+.answertext{
+    margin: 10px 3px;
+}
+.tiankong{
+    text-align: right;
+    margin-right: 5px;
+}
+.tiankong div{
+    float: right;
+}
+.hr2{
+    margin-top: 5px;
+}
+.click1{
+    border-radius:15px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/img1.png);
+    background-size: 30px;
+    border:0px;
+    margin-top: 4px;
+}
+.click2{
+    border-radius:15px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/img2.png);
+    background-size: 30px;
+    border:0px;
+    margin-top: 4px;
+}
+
+.spannn{
+    font-size: 13px;
+    position: relative;
+    bottom: 5px;
+    margin-right: 5px;
+}
+.fadeinthis{
+    float: right;
+    margin-right: 10px;
+    display: none;
+}
+
+.showit{
+    margin-top: 5px;
+
+}
+.que{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+.ans{
+    margin-left: 30px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #454545;
+}
