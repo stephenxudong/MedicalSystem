@@ -1,13 +1,9 @@
 package test;
-import example.dao.Patient_accountMapper;
-import example.pojo.Patient_account;
-import example.uitl.HttpUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.util.EntityUtils;
+import web.dao.Patient_accountMapper;
+import web.pojo.Patient_account;
 import org.apache.ibatis.session.SqlSession;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
 
 public class UserTest {
     //static GynaecologyLogic g=new GynaecologyLogic();
@@ -15,6 +11,8 @@ public class UserTest {
         SqlSession session = SFactory.getSqlSession();
         Patient_accountMapper mapper = session.getMapper(Patient_accountMapper.class);
         Patient_account user=mapper.selectByIdentiId("420624199902165131");
+        Date d = new Date();
+        System.out.println(new Date().getTime());
 //        String host = "http://cowsms.market.alicloudapi.com";
 //        String path = "/intf/smsapi";
 //        String method = "GET";

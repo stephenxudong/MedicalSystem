@@ -3,6 +3,13 @@ var count = 60; //间隔函数，1秒执行
 var curCount; //当前剩余秒数
 var codeLength = 4; //验证码长度
 
+
+function finalSubmit() {
+    sessionStorage.setItem("idCardId",$('#ident').val());
+    sessionStorage.setItem("phone",$('#iphone').val());
+    var form = $("#sign_up_form");
+    form.submit();
+}
 function sendMessages() {
     curCount = count;
     var phone=$('#iphone').val();
@@ -55,6 +62,7 @@ function getValiCode()
 //检查身份证
 function checkident() {
     var curr=$('#ident');
+
     if(curr.val().trim()==''){$('#span1').text("请输入身份证号");$('#span1').css('color','#8c2645');}
     else if(curr.val().trim()!='') {
         var myreg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
@@ -67,6 +75,7 @@ function checkident() {
             $('#span1').css('color','#D3DCD7');
         }
     }
+
 }
 //检查手机号
 function checkphone() {

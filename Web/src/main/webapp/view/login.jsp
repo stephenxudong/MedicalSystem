@@ -54,14 +54,14 @@
             </ul>
         </div>
     </div>
-    <script>
-        $('#login-button').click(function (event) {
-            event.preventDefault();
-            $('form').fadeOut(500);
-            $('.wrapper').addClass('form-success');
-            $('h1').text("欢迎使用");
-        });
-    </script>
+    <%--<script>--%>
+        <%--$('#login-button').click(function (event) {--%>
+            <%--event.preventDefault();--%>
+            <%--$('form').fadeOut(500);--%>
+            <%--$('.wrapper').addClass('form-success');--%>
+            <%--$('h1').text("欢迎使用");--%>
+        <%--});--%>
+    <%--</script>--%>
 
 
 </div><!-- /container -->
@@ -103,12 +103,13 @@
     <%--})();--%>
 
 
-    <%--function finalSubmit() {--%>
-        <%--var form = $("#sign_up_form");--%>
-        <%--form.submit();--%>
-    <%--}--%>
+
 
 <%--</script>--%>
+
+<script>
+
+</script>
 </body>
 </html>
 

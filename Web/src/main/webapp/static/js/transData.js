@@ -2,10 +2,13 @@
 var currentQuesId;
 var nodes;//节点内容
 var model;//用来存储节点关系
+var allcase = new Array();
+
 function getNodeAndModelbyModelId(model_id)
 {
     var _ques=new Object();
     _ques.model_id = model_id;//暂时都是一个模型
+    sessionStorage.setItem("model_id",model_id);
     _ques.msg="first";
     $.ajax({
         async:false,
@@ -119,8 +122,6 @@ function getRequeirNodes(list, id){
     }
 }
 function showallques() {
-    var allcase = new Array();
-
     var quesfir=$("#myModalLabel").text();
     var ansfir=$("#firstanswer").val();
     onecase=new Object();
@@ -165,6 +166,7 @@ function showallques() {
         onecase.question=quess;
         onecase.answer=anss;
         allcase.push(onecase);
+
     }
 }
 function viewchange(chan){
@@ -173,6 +175,29 @@ function viewchange(chan){
     $("html,body").delay(300).animate({scrollTop:$("#"+jia+"").offset().top},600);
 }
 
+
+function caseSubmit()
+{
+    var caseInfo = new Object();
+    caseInfo.main_case = allcase[0].answer;//第一个是主诉
+    caseInfo.current_ques_ans = allcase.slice(1);
+    caseInfo.model_id = sessionStorage.getItem("model_id");
+    caseInfo.idCardId = sessionStorage.getItem("idCardId");
+    if(allcase.length==0)
+        return;
+    else
+        $.ajax({
+            async:false,
+            type:'post',
+            url:"/demo/collect/quesAndAns/",
+            contentType:'application/json;charset=utf-8',
+            data:JSON.stringify(caseInfo),
+            success:function(data){
+                var info = jQuery.parseJSON(data);
+                alert(info.msg);
+            }
+        });
+}
 
 
 

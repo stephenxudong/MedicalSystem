@@ -2,33 +2,33 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="example.dao.Patient_accountMapper">
+<mapper namespace="web.dao.Patient_accountMapper">
 
-    <select id="findByPatientId" parameterType="String" resultType="example.pojo.Patient_account">
+    <select id="findByPatientId" parameterType="String" resultType="web.pojo.Patient_account">
         SELECT * FROM Patient_account WHERE patient_account_id=#{patient_account_id}
     </select>
 
-    <update id="updatePatientAccount" parameterType="example.pojo.Patient_account">
+    <update id="updatePatientAccount" parameterType="web.pojo.Patient_account">
         UPDATE Patient_account
         SET patient_phone_number=#{patient_phone_number}
         WHERE doctor_account_id=#{doctor_account_id}
     </update>
 
 
-    <insert id="insertPatient" parameterType="example.pojo.Patient_account" useGeneratedKeys="true"  >
+    <insert id="insertPatient" parameterType="web.pojo.Patient_account" useGeneratedKeys="true"  >
         INSERT INTO Patient_account (patient_account_id, patient_name, patient_phone_number, patient_identification_id) VALUES (#{patient_account_id},#{patient_name},#{patient_phone_number},#{patient_identification_id})
     </insert>
-    <select id="selectByIdentiId" parameterType="String" resultType="example.pojo.Patient_account">
+    <select id="selectByIdentiId" parameterType="String" resultType="web.pojo.Patient_account">
         SELECT * FROM Patient_account where patient_identification_id=#{patient_identification_id}
     </select>
 
-    <resultMap id="medicalCaseResultMap" type="example.pojo.Patient_account">
+    <resultMap id="medicalCaseResultMap" type="web.pojo.Patient_account">
         <id property="id" column="patient_account_id"/>
         <collection property="medical_caselist" javaType="ArrayList"
-                    column="id" ofType="example.pojo.medicalCase.GynaecologyCase"
+                    column="id" ofType="web.pojo.medicalCase.GynaecologyCase"
                     select="selectCaseByPatientId"   />
     </resultMap>
-    <select id="selectCaseByPatientId" resultType="example.pojo.medicalCase.GynaecologyCase">
+    <select id="selectCaseByPatientId" resultType="web.pojo.medicalCase.GynaecologyCase">
         SELECT * FROM medical_case WHERE patient_account_id=#{patient_account_id}
     </select>
 

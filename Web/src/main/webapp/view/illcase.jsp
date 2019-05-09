@@ -77,7 +77,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">返回修改</button>
-                <button type="button" class="btn btn-primary">提交</button>
+                <button id="endBtn" type="button" class="btn btn-primary" onclick="caseSubmit()">提交</button>
             </div>
         </div>
     </div>

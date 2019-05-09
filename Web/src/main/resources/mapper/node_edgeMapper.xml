@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="example.dao.Node_edgeMapper">
-    <select id="selectAllNode"  resultType="example.pojo.Node_edge">
+<mapper namespace="web.dao.Node_edgeMapper">
+    <select id="selectAllNode"  resultType="web.pojo.Node_edge">
         SELECT * FROM node_edge;
     </select>
 

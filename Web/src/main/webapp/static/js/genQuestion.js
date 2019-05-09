@@ -1,7 +1,5 @@
 var quesnum=1;
 
-var questionname="张洪瀚的儿子是谁";
-var answername=new Array("侯云","陈晓恒","廖旭东","王李翰","李光耀");
 
 function firstques(){
     $('#firstquestion').modal('show');

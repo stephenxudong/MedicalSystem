@@ -2,30 +2,30 @@
         <!DOCTYPE mapper
                 PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="example.dao.Doctor_accountMapper">
-    <select id="findByDoctorId" parameterType="String" resultType="example.pojo.Doctor_account">
+<mapper namespace="web.dao.Doctor_accountMapper">
+    <select id="findByDoctorId" parameterType="String" resultType="web.pojo.Doctor_account">
         SELECT * FROM Doctor_account WHERE doctor_account_id=#{doctor_account_id}
     </select>
 
-    <update id="updateDoctorAccount" parameterType="example.pojo.Doctor_account">
+    <update id="updateDoctorAccount" parameterType="web.pojo.Doctor_account">
         UPDATE Doctor_account
         SET doctor_name=#{doctor_name},department=#{department}
         WHERE doctor_account_id=#{doctor_account_id}
     </update>
 
-    <update id="loginChangeStatus" parameterType="example.pojo.Doctor_account">
-        UPDATE Doctor_account SET status='true'
+    <update id="loginChangeStatus" parameterType="String">
+        UPDATE Doctor_account SET status= #{status}
         WHERE doctor_account_id=#{doctor_account_id}
     </update>
 
-    <insert id="insertDoctor" parameterType="example.pojo.Doctor_account" useGeneratedKeys="true"  >
+    <insert id="insertDoctor" parameterType="web.pojo.Doctor_account" useGeneratedKeys="true"  >
         INSERT INTO Doctor_account (doctor_account_id, doctor_name, department) VALUES (#{doctor_account_id},#{doctor_name},#{department})
     </insert>
 
-    <resultMap id="medicalCaseResultMap" type="example.pojo.Doctor_account">
+    <resultMap id="medicalCaseResultMap" type="web.pojo.Doctor_account">
         <id property="id" column="doctor_account_id"/>
         <collection property="medical_caselist" javaType="ArrayList"
-         column="id" ofType="example.pojo.medicalCase.GynaecologyCase"
+         column="id" ofType="web.pojo.medicalCase.GynaecologyCase"
           select="selectUndeliveredGynaecologyCase"   />
     </resultMap>
 
